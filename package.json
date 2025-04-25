@@ -1,0 +1,22 @@
+{
+  "name": "svg-icon-modifier",
+  "version": "1.0.0",
+  "description": "A Figma plugin to modify SVG icon color and size.",
+  "main": "dist/code.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "watch": "webpack --mode production --watch"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.110.0",
+    "copy-webpack-plugin": "^13.0.0",
+    "html-loader": "^4.2.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.6",
+    "webpack-cli": "^5.1.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

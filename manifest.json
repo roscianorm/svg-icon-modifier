@@ -1,0 +1,8 @@
+{
+  "name": "SVG Icon Modifier",
+  "id": "svg-icon-modifier",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
+  "editorType": ["figma"]
+}

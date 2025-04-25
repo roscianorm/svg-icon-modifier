@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Icon Modifier</title>
+    <style>
+      body {
+        font-family: Inter, Arial, sans-serif;
+        font-size: 14px;
+        padding: 16px;
+      }
+
+      header {
+        margin-bottom: 8px;
+      }
+
+      header h1{
+        font-size: 24px;
+        margin: 0;
+      }
+
+
+
+      .inputs { 
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .inputs label {
+        color: #333;
+      }
+
+      .inputs input {
+        margin-bottom: 8px;
+        width: 100%;
+      }
+
+      .inputs input:focus-visible {
+        outline: 1px solid #024ad8;
+        border-radius: 4px;
+      }
+
+
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: space-between;
+      }
+
+      .buttons button {
+        width: 100%;
+        padding: 8px;
+        background-color: #024ad8;
+        border-radius: 4px;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .buttons button:hover {
+        background-color: #001d57;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Modify SVG Icons</h1>
+    </header>
+
+    <main>
+      <p>Change the color and size of the selected <b>SVG</b> icons.</p>
+
+      <div class="inputs">
+        <label for="color">Color (HEX):
+          <input type="text" id="color" placeholder="#FF0000" />
+        </label>
+        
+        <label for="size">Size (px):
+          <input type="number" id="size" placeholder="100" />
+        </label>
+      </div>
+      
+      <div class="buttons">
+        <button type="button" id="apply">Apply Changes</button>
+        <button type="button" id="close">Close Plugin</button>
+      </div>
+    </main>
+
+    <script>
+      const applyButton = document.getElementById('apply');
+      const closeButton = document.getElementById('close');
+
+      applyButton.onclick = () => {
+        const color = document.getElementById('color').value;
+        const size = parseFloat(document.getElementById('size').value);
+
+        parent.postMessage(
+          {
+            pluginMessage: {
+              type: 'modify-icons',
+              color: color || null,
+              size: size || null,
+            },
+          },
+          '*'
+        );
+      };
+
+      closeButton.onclick = () => {
+        parent.postMessage({ pluginMessage: { type: 'close' } }, '*');
+      };
+    </script>
+  </body>
+</html>
